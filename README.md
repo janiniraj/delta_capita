@@ -3,7 +3,11 @@
 # Delta Capita: Shopping Basket Price Calculator (Version 2)
 # Author: Niraj Jani
 
-I have created A **Node.js + TypeScript** backend system that manages products, promotional offers, and cart total calculation, using **JSON file storage**. This is plain simle application and this can be further expanded to use postgres (or any other db, at this moment I am using local storage in JSON format) to get base of data and run sql queries.
+I have created A **Node.js + TypeScript + Jest** backend system that manages products, promotional offers, and cart total calculation, utilizing **JSON file storage**. While the current implementation leverages local JSON storage, the system can be extended to integrate with PostgreSQL or any other database to enable SQL-based data operations.
+
+Furthermore, I have created a comprehensive Postman collection for the API endpoints, which is publicly accessible at URL: https://documenter.getpostman.com/view/689089/2sB2j96oNv
+
+Additionally, I have converted the Postman collection to the Swagger (OpenAPI) format to accommodate teams that may prefer Swagger for API exploration and documentation.
 
 ---
 
