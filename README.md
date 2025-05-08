@@ -30,7 +30,7 @@ Given a list of shopping, calculate the total cost of those items.
 
 ## Table of Contents
 
-- [API Documentation](API-documentation)
+- [API Documentation](#api-documentation)
 - [Features](#Features)
 - [Prerequisites](#Prerequisites)
 - [Project Structure](#project-structure)
