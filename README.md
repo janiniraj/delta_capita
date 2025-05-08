@@ -34,10 +34,10 @@ Given a list of shopping, calculate the total cost of those items.
 - [Features](#Features)
 - [Prerequisites](#Prerequisites)
 - [Project Structure](#project-structure)
-- [Setup Instruction](#setup-instruction)
+- [Setup Instruction](#setup-instructions)
 - [Running Tests](#running-tests)
 - [API Endpoints](#api-endpoints)
-- [Author](#Author)
+- [Author](#author)
 
 ---
 
