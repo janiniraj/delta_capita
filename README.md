@@ -1,9 +1,9 @@
 
 
-# Delta Capita: Shopping Basket Price Calculator
+# Delta Capita: Shopping Basket Price Calculator (Version 2)
 # Author: Niraj Jani
 
-I have created **Node.js (version 18)** application built with **Express** that calculates the total price of a shopping basket based on specific pricing rules and discounts for different items. This is plain Express application and this can be further expanded to use postgres (or any other db) to get base of data and run sql queries.
+I have created A **Node.js + TypeScript** backend system that manages products, promotional offers, and cart total calculation, using **JSON file storage**. This is plain simle application and this can be further expanded to use postgres (or any other db, at this moment I am using local storage in JSON format) to get base of data and run sql queries.
 
 ---
 
@@ -30,150 +30,159 @@ Given a list of shopping, calculate the total cost of those items.
 
 ## Table of Contents
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [API Documentation](#api-documentation)
+- [API Documentation](API Documentation)
+- [Features](#Features)
+- [Prerequisites](#Prerequisites)
+- [Project Structure](#Project Structure)
+- [Setup Instruction](#Setup-Instruction)
 - [Running Tests](#running-tests)
-
-
----
-
-## Installation
-
-To get started with the project, you will need to install the required dependencies.
-
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/janiniraj/delta_capita.git
-   cd delta_capita
-   ```
-
-2. **Install dependencies**:
-   Make sure you have [Node.js](https://nodejs.org/) installed. (**I am using version 18**) Then, run:
-
-   ```bash
-   npm install
-   ```
-3. **Install development dependencies** (if not already installed):
-   ```bash
-   npm install --save-dev jest supertest
-   ```
-
----
-
-## Usage
-
-1. **Start the Express server**:
-
-   Run the following command to start the server:
-
-   ```bash
-   node server.js
-   ```
-
-   The server will run on `http://localhost:3000`.
-
-2. **Send a POST request to the `/calculate` endpoint** with a JSON payload containing an array of items in your shopping basket.
-
-   Example:
-   
-   You can use **Postman** or **cURL** to test the API.
-
-   **Request**:
-   ```bash
-   POST http://localhost:3000/calculate
-   Content-Type: application/json
-
-   {
-     "basket": ["Apple", "Apple", "Banana"]
-   }
-   ```
-
-   **Response**:
-   ```json
-   {
-     "total": "0.90"
-   }
-   ```
+- [API Endpoints](#API Endpoints)
+- [Author](#Author)
 
 ---
 
 ## API Documentation
+Published API Documentation Link: https://documenter.getpostman.com/view/689089/2sB2j96oNv
 
-### GET `/`
+Reference: postman Collection and Swagger collection in root folder
 
+---
 
-- **Response**: A JSON object with welcome message.
-  ```json
-  {
-    "welcome":"welcome to delta capita test, written by Niraj Jani"
-  }
-  ```
+## Features
 
-### POST `/calculate`
+-  Add, update, list, and delete products
+- Apply and manage promotional offers:
+  - **2FOR1** (Buy One Get One Free)
+  - **3FOR2** (Three for the Price of Two)
+- Calculate total cost of a cart
+- Persistent JSON storage (`products.json`, `offers.json`)
+- Unit tested using Jest
 
-- **Request Body**: A JSON object with a `basket` property, which is an array of item names.
-  ```json
-  {
-    "basket": ["Apple", "Apple", "Banana", "Melon", "Melon", "Lime", "Lime", "Lime"]
-  }
-  ```
+---
 
-- **Response**: A JSON object with the total cost of the basket, formatted to two decimal places.
-  ```json
-  {
-    "total": "1.70"
-  }
-  ```
+### Prerequisites
 
-- **Error Handling**: 
-  - If the `basket` is not an array, the response will include an error message:
-    ```json
-    {
-      "error": "Invalid input, basket should be an array."
-    }
-    ```
+- [Node.js v20+](https://nodejs.org)
+- [npm](https://www.npmjs.com/)
+- [nvm](https://github.com/nvm-sh/nvm) (optional)
+
+---
+
+## Project Structure
+
+```
+.
+├── src/
+│   ├── controller/         # Route controllers
+│   ├── models/             # Data models
+│   ├── repositories/       # JSON storage + data access
+│   ├── services/           # Business logic
+│   ├── container/          # Dependency injection setup
+│   └── index.ts            # App entry point
+├── __tests__/              # Unit tests
+├── products.json           # Product store
+├── offers.json             # Offers store
+├── jest.config.js          # Jest config
+├── package.json
+├── tsconfig.json
+├── delta_capita_v2.postman_collection.json
+├── swagger.yaml
+
+└──README.md
+```
+
+---
+
+## Setup Instructions
+
+```bash
+# Clone the repo
+git clone https://github.com/janiniraj/delta_capita.git
+cd delta_capita
+
+# Use correct Node version
+nvm use 20 || nvm install 20
+
+# Install dependencies
+npm install
+
+# Run the server
+npm run dev
+```
 
 ---
 
 ## Running Tests
 
-The project uses **Jest** and **Supertest** for testing.
+```bash
+# Run unit tests
+npm test
+```
 
-1. **Run tests**:
+---
 
-   To run the tests, use the following command:
+## API Endpoints
 
-   ```bash
-   npm test
-   ```
+### 🔹 Root
+- `GET /`  
+  Returns welcome message.
 
-   This will run the test suite and output the results in the terminal.
-   Sample Output
-   ```bash
-      (base) nirajjani@Nirajs-MacBook-Pro delta_capita % npm test
-      
-      > delta_capita@1.0.0 test
-      > jest
-      
-        console.log
-          Unknown item: Dragonfruit
-      
-            at log (app.js:74:25)
-      
-       PASS  ./app.test.js
-        Delta Capita: Shopping Basket Price Calculator
-          ✓ should calculate the total correctly for a simple basket (32 ms)
-          ✓ should calculate the total correctly with "buy one get one free" offer on melons (2 ms)
-          ✓ should calculate the total correctly with "three for the price of two" offer on limes (2 ms)
-          ✓ should calculate the total correctly with a mix of items (1 ms)
-          ✓ should return an error if the basket is not an array (2 ms)
-          ✓ should return the correct total even if an unknown item is in the basket (19 ms)
-          ✓ should return 0.00 if the basket is empty (3 ms)
-      
-      Test Suites: 1 passed, 1 total
-      Tests:       7 passed, 7 total
-      Snapshots:   0 total
-      Time:        0.552 s, estimated 1 s
-      Ran all test suites.
-      ```
+### 🔹 Products
+- `GET /api/products`  
+  List all products.
+
+- `POST /api/products`  
+  Add or update a product.  
+  Example body:
+  ```json
+  { "name": "Apple", "price": 35 }
+  ```
+
+- `DELETE /api/products/:name`  
+  Delete a product by name.
+
+---
+
+### 🔹 Offers
+- `GET /api/offers`  
+  List all offers.
+
+- `POST /api/offers`  
+  Add or update offer for a product.  
+  Example body:
+  ```json
+  {
+    "productName": "Apple",
+    "type": "2FOR1",
+    "description": "Buy one get one free"
+  }
+  ```
+
+- `DELETE /api/offers/:productName`  
+  Delete an offer by product.
+
+---
+
+### 🔹 Cart
+- `POST /api/cart/total`  
+  Calculate total cost for a cart.  
+  Example body:
+  ```json
+  ["Apple", "Apple", "Banana", "Melon", "Melon", "Lime", "Lime", "Lime"]
+  ```
+
+  Response:
+  ```json
+  {
+    "total": 260,
+    "formatted": "£2.60"
+  }
+  ```
+
+---
+
+## 👨‍💻 Author
+
+**Niraj Jani**
+
+> Built as a coding test for Delta Capita (version 2).
