@@ -30,7 +30,7 @@ Given a list of shopping, calculate the total cost of those items.
 
 ## Table of Contents
 
-- [API Documentation](API Documentation)
+- [API Documentation](api-documentation)
 - [Features](#Features)
 - [Prerequisites](#Prerequisites)
 - [Project Structure](#project-structure)
@@ -159,11 +159,11 @@ Ran all test suites.
 
 ## API Endpoints
 
-### 🔹 Root
+### Root
 - `GET /`  
   Returns welcome message.
 
-### 🔹 Products
+### Products
 - `GET /api/products`  
   List all products.
 
@@ -179,7 +179,7 @@ Ran all test suites.
 
 ---
 
-### 🔹 Offers
+### Offers
 - `GET /api/offers`  
   List all offers.
 
@@ -199,7 +199,7 @@ Ran all test suites.
 
 ---
 
-### 🔹 Cart
+### Cart
 - `POST /api/cart/total`  
   Calculate total cost for a cart.  
   Example body:
