@@ -1,0 +1,12 @@
+[
+  {
+    "productName": "Melon",
+    "type": "2FOR1",
+    "description": "Buy one get one free"
+  },
+  {
+    "productName": "Lime",
+    "type": "3FOR2",
+    "description": "Three for the price of two"
+  }
+]
