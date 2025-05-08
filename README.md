@@ -95,21 +95,40 @@ Reference: postman Collection and Swagger collection in root folder
 
 ## Setup Instructions
 
+
+###### Clone the repo
 ```bash
-# Clone the repo
 git clone https://github.com/janiniraj/delta_capita.git
 cd delta_capita
-
-# Use correct Node version
-nvm use 20 || nvm install 20
-
-# Install dependencies
-npm install
-
-# Run the server
-npm run dev
 ```
 
+###### Use correct Node version
+```bash
+nvm use 20 || nvm install 20
+```
+###### Install dependencies
+```bash
+npm install
+```
+
+###### Run the server
+```bash
+npm run dev
+```
+Terminal should show below
+````bash
+(base) nirajjani@Nirajs-MacBook-Pro delta_capita % npm run dev
+
+> delta_capita@1.0.0 dev
+> nodemon --exec ts-node src/index.ts
+
+[nodemon] 3.1.10
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: ts,json
+[nodemon] starting `ts-node src/index.ts`
+Server running at http://localhost:3000
+````
 ---
 
 ## Running Tests
@@ -118,6 +137,23 @@ npm run dev
 # Run unit tests
 npm test
 ```
+Output
+````bash
+(base) nirajjani@Nirajs-MacBook-Pro delta_capita % npm test  
+
+> delta_capita@1.0.0 test
+> jest
+
+ PASS  __tests__/CartService.test.ts
+ PASS  __tests__/ProductService.test.ts
+ PASS  __tests__/OfferService.test.ts
+
+Test Suites: 3 passed, 3 total
+Tests:       7 passed, 7 total
+Snapshots:   0 total
+Time:        2.865 s
+Ran all test suites.
+````
 
 ---
 
